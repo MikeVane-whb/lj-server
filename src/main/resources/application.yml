@@ -1,0 +1,22 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /laji
+spring:
+  application:
+    name: lj
+  datasource:
+    url: jdbc:mysql://106.55.225.93/laji?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+    password: 134679
+    username: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+
+  # 是否执行MyBatis xml配置文件的状态检查, 只是检查状态,默认false
+  check-config-location: true
+  # Mapper对应的xml路径
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+

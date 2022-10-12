@@ -16,5 +16,5 @@ public interface UserMapper {
      * @param user 用户id/email
      * @return
      */
-    User selectByUser(@Param("user") User user);
+    User[] selectByUser(@Param("user") User user);
 }

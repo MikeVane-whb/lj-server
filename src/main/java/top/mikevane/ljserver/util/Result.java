@@ -13,7 +13,7 @@ import java.util.Map;
 @Data
 public class Result<T> {
     /**
-     * 编码：1成功，0和其它数字为失败
+     * 编码：200成功，500和其它数字为失败
      */
     private Integer code;
 
@@ -35,14 +35,21 @@ public class Result<T> {
     public static <T> Result<T> success(T object) {
         Result<T> r = new Result<T>();
         r.data = object;
-        r.code = 1;
+        r.code = 200;
         return r;
     }
 
     public static <T> Result<T> error(String msg) {
         Result r = new Result();
         r.msg = msg;
-        r.code = 0;
+        r.code = 500;
+        return r;
+    }
+
+    public static <T> Result<T> error(String msg,Integer code) {
+        Result r = new Result();
+        r.msg = msg;
+        r.code = code;
         return r;
     }
 

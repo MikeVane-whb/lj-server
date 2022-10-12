@@ -13,5 +13,5 @@ public interface UserService {
      * @param user 用户id/email
      * @return
      */
-    User selectByUser(User user);
+    User[] selectByUser(User user);
 }

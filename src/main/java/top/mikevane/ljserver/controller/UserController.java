@@ -28,15 +28,15 @@ public class UserController {
      */
     @PostMapping("/select")
     public Result selectByUser(@RequestParam(value = "id",required = false) Integer id,
-                               @RequestParam(value = "email",required = false) String email){
+                               @RequestParam(value = "phone",required = false) String phone){
         User user = new User();
         user.setId(id);
-        user.setEmail(email);
-        User selectByUser = userService.selectByUser(user);
+        user.setPhone(phone);
+        User[] selectByUser = userService.selectByUser(user);
         if(selectByUser == null){
             return Result.error("用户不存在或者邮箱出错");
         }
-        return Result.success(selectByUser);
+        return Result.success("查询成功");
     }
 
 //    @PostMapping

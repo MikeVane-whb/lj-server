@@ -20,9 +20,9 @@ public class User implements Serializable {
      */
     private Integer id;
     /**
-     * 用户邮箱
+     * 用户手机号
      */
-    private String email;
+    private String phone;
     /**
      * 用户密码
      */
@@ -30,7 +30,7 @@ public class User implements Serializable {
     /**
      * 用户详细信息id
      */
-    private String userInfoId;
+    private Integer userInfoId;
     /**
      * 用户 token（注意定期清理）
      */

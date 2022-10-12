@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public User selectByUser(User user) {
+    public User[] selectByUser(User user) {
         return userMapper.selectByUser(user);
     }
 }

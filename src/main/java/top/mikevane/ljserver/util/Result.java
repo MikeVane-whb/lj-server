@@ -39,6 +39,14 @@ public class Result<T> {
         return r;
     }
 
+    public static <T> Result<T> success(T object, String msg) {
+        Result<T> r = new Result<T>();
+        r.data = object;
+        r.msg = msg;
+        r.code = 200;
+        return r;
+    }
+
     public static <T> Result<T> error(String msg) {
         Result r = new Result();
         r.msg = msg;

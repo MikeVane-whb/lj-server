@@ -14,4 +14,11 @@ public interface UserService {
      * @return
      */
     User[] selectByUser(User user);
+
+    /**
+     * 根据 User 进行注册操作
+     * @param user
+     * @return
+     */
+    int register(User user);
 }

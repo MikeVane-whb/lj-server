@@ -73,8 +73,16 @@
             <version>0.9.1</version>
         </dependency>
 
+        <!--Mail发送邮件-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+            <version>2.6.3</version>
+        </dependency>
 
-<!--        &lt;!&ndash;PageHelper启动器&ndash;&gt;-->
+
+
+        <!--        &lt;!&ndash;PageHelper启动器&ndash;&gt;-->
 <!--        <dependency>-->
 <!--            <groupId>com.github.pagehelper</groupId>-->
 <!--            <artifactId>pagehelper-spring-boot-starter</artifactId>-->

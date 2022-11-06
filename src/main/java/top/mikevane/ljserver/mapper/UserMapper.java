@@ -17,4 +17,11 @@ public interface UserMapper {
      * @return
      */
     User[] selectByUser(@Param("user") User user);
+
+    /**
+     * 根据传入User插入用户信息
+     * @param user
+     * @return
+     */
+    int insertByUser(@Param("user") User user);
 }

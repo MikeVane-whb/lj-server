@@ -17,7 +17,7 @@
     </select>
 
     <insert id="insertByUser">
-        insert into lj_user (id,phone,password)
-        values (default,#{user.phone},#{user.password})
+        insert into lj_user (id,username,phone,password)
+        values (default,#{user.phone},#{user.phone},#{user.password})
     </insert>
 </mapper>

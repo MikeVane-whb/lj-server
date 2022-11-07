@@ -45,7 +45,7 @@ public class UserController {
 
     /**
      * 发送验证码
-     * @param user
+     * @param user 传入用于信息
      * @param request 用于添加 sessionId
      * @return
      */
@@ -63,16 +63,15 @@ public class UserController {
      * @return
      */
     @PostMapping("/register")
-    public Result register(@RequestBody(required = false) User user,
-                           @RequestBody(required = false) String verityCode,
-                           HttpSession httpSession){
+    public Result register(@RequestBody User user, HttpSession httpSession){
         log.info("sessionId: " + httpSession.getId());
         String frontPhone = user.getPhone();
+        String frontVerityCode = user.getVerityCode();
         String sessionPhone = (String) httpSession.getAttribute("phone");
         String sessionVerityCode = (String)httpSession.getAttribute("verityCode");
         // 防空指针，前端传入手机号
         if (StringUtils.getInstance().isNullOrEmpty(frontPhone)){
-            return Result.error("手机号不能为空");
+            return Result.error("手机号为空");
         }
         // 防空指针，session 中没有相应的手机号
         if (StringUtils.getInstance().isNullOrEmpty(sessionPhone)){
@@ -82,9 +81,13 @@ public class UserController {
         if (!frontPhone.equals(sessionPhone)){
             return Result.error("手机号有误");
         }
+        // 前端验证码为空
+        if (StringUtils.getInstance().isNullOrEmpty(frontVerityCode)){
+            return Result.error("验证码为空");
+        }
         // 前端传入验证码与 session 中验证码冲突
-        if (!verityCode.equals(sessionVerityCode)){
-            System.out.println("验证码有误");
+        if (!frontVerityCode.equals(sessionVerityCode)){
+            return Result.error("验证码有误");
         }
         int account = userService.register(user);
         if (account <= 0){

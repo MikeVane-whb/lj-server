@@ -2,13 +2,10 @@ package top.mikevane.ljserver.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.Random;
@@ -29,11 +26,11 @@ public class EmailUtil {
         EmailUtil.javaMailSender = mailSender;
     }
 
-    public static void sendCode(String addressee, HttpSession session){
+    public static void sendCode(String phone, HttpSession session){
         log.info("发送邮件");
         String sessionId = session.getId();
         log.info("sessionId: " + sessionId);
-        String email = addressee + "@139.com";
+        String email = phone + "@139.com";
         // 获取随机验证码
         String randomForCodePhone = getRandomForCodePhone();
         //创建简单的邮件发送对象
@@ -46,7 +43,8 @@ public class EmailUtil {
         //发送
         // javaMailSender.send(message);
         session.setAttribute("sessionId",sessionId);
-        session.setAttribute(addressee,randomForCodePhone);
+        session.setAttribute("phone",phone);
+        session.setAttribute("verityCode",randomForCodePhone);
         log.info("邮件发送成功");
     }
 
@@ -59,7 +57,7 @@ public class EmailUtil {
         for (int i = 0; i < 4; i++) {
             sb.append(random.nextInt(10));
         }
-        System.out.println(sb.toString());
+        log.info(sb.toString());
         return sb.toString();
     }
 }

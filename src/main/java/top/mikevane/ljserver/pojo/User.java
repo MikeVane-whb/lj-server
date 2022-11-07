@@ -35,4 +35,8 @@ public class User implements Serializable {
      * 用户 token（注意定期清理）
      */
     private String token;
+    /**
+     * 用户验证码
+     */
+    private String verityCode;
 }

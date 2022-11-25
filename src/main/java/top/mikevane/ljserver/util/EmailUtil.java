@@ -41,7 +41,7 @@ public class EmailUtil {
         message.setText("您的验证码为:"+ randomForCodePhone +",欢迎访问 lj"); // 设置邮件文本内容
         message.setSentDate(new Date());                // 设置邮件发送时间
         //发送
-        // javaMailSender.send(message);
+         javaMailSender.send(message);
         session.setAttribute("sessionId",sessionId);
         session.setAttribute("phone",phone);
         session.setAttribute("verityCode",randomForCodePhone);

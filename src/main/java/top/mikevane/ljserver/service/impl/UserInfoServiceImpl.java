@@ -33,4 +33,9 @@ public class UserInfoServiceImpl implements UserInfoService {
     public UserInfo[] selectUserInfo(UserInfo userInfo) {
         return userInfoMapper.selectUserInfo(userInfo);
     }
+
+    @Override
+    public int updateUserInfo(UserInfo userInfo) {
+        return userInfoMapper.update(userInfo);
+    }
 }

@@ -23,4 +23,11 @@ public interface UserInfoService {
      * @return 成功返回userInfo信息，否则为空
      */
     UserInfo[] selectUserInfo(UserInfo userInfo);
+
+    /**
+     * 更新 userinfo
+     * @param userInfo userinfo信息
+     * @return 更新成功返回 id，失败返回-1
+     */
+    int updateUserInfo(UserInfo userInfo);
 }

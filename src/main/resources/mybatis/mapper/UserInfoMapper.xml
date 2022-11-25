@@ -8,6 +8,23 @@
         values (#{username},#{phone},#{sex})
     </insert>
 
+    <update id="update" parameterType="top.mikevane.ljserver.pojo.UserInfo"
+            useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        update lj_userinfo
+        <set>
+            <if test="userInfo.username != null">
+                username = #{userInfo.username},
+            </if>
+            <if test="userInfo.email != null">
+                email = #{userInfo.email},
+            </if>
+            <if test="userInfo.sex != null">
+                sex = #{userInfo.sex},
+            </if>
+        </set>
+        where phone = #{userInfo.phone}
+    </update>
+
     <select id="selectUserInfo" resultType="top.mikevane.ljserver.pojo.UserInfo">
         select * from lj_userinfo
         <where>

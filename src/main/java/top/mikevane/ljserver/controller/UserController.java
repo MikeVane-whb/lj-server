@@ -179,4 +179,28 @@ public class UserController {
         }
         return Result.success(userInfos[0],"查询成功");
     }
+
+    /**
+     * 更新用户信息
+     * @param userInfo userinfo
+     * @param session session
+     * @return
+     */
+    @PostMapping("/updateUserInfo")
+    public Result updateUserInfo(@RequestBody UserInfo userInfo, HttpSession session){
+        log.info(TAG + "updateUserInfo");
+        // session中没有之前存储的信息
+        if (StringUtils.getInstance().isNullOrEmpty(session.getAttribute("phone"))){
+            return Result.error("请重新登录");
+        }
+        // session中存储的手机号与前端传入手机号有冲突
+        if (!userInfo.getPhone().equals(session.getAttribute("phone"))){
+            return Result.error("未知错误");
+        }
+        int id = userInfoService.updateUserInfo(userInfo);
+        if (id > 0){
+            return Result.success("修改成功");
+        }
+        return Result.error("修改失败");
+    }
 }

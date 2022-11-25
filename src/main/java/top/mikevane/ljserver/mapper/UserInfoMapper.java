@@ -23,4 +23,11 @@ public interface UserInfoMapper {
      * @param userInfo userInfo
      */
     UserInfo[] selectUserInfo(@Param("userInfo") UserInfo userInfo);
+
+    /**
+     * 更新 userinfo 信息
+     * @param userInfo
+     * @return 成功返回主键 id
+     */
+    int update(@Param("userInfo") UserInfo userInfo);
 }
